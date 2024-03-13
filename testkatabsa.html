@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="textvalue">
+    <button onclick="checkkata()">Check</button>
+    <script>
+        function checkkata(){
+            let kata = document.getElementById('textvalue').value
+            console.log(pengecekankata(kata))
+            console.log(pengecekanrecursive(kata))
+        }
+        function pengecekankata(kata){
+            let hasil = true
+            let setengah = kata.length / 2
+
+            for(i=0;i<setengah;i++){
+                if(kata[i] !== kata[kata.length - 1 -i]){
+                    hasil = false
+                    break
+                }
+            }
+            return hasil
+        }
+        function pengecekanrecursive(kata){
+            if(kata.length <= 1){
+                return true
+            }
+            if(kata[0] === kata[kata.length - 1]){
+                return pengecekanrecursive(kata.slice(1,-1))
+            }else{
+                return false
+            }
+        }
+    </script>
+</body>
+</html>
